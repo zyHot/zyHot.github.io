@@ -86,9 +86,6 @@
                 return '<span class="btn ' + className + '">' + span[index] + '</span>';
             },
             onSlideChangeEnd: function(swiper){
-            	if(swiper.activeIndex  == 2){
-//          		$('.swiper-container-out .swiper-slide').eq(2).addClass("swiper-no-swiping")
-            	}
                 if(swiper.activeIndex == 0){
                     $(".center b").html("商品介绍");
                 }else {
@@ -100,10 +97,7 @@
             pagination: '.swiper-pagination',
             paginationClickable: true,
             onSlideChangeEnd:function(swiper){
-            	console.log(swiper.activeIndex);
-            	if(swiper.activeIndex == 0){
-            		swiperIn.lockSwipeToPrev();
-            	}
+            	
             }
         });
         var goodsID = parseUrl()["goodsID"];
