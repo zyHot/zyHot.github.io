@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- SEO  -->
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <!-- 苹果专用 -->
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="blank"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <!-- 简单移动端适配 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <!-- 图标 -->
+    <link rel="shortcut icon" href="iconfont/iconfont.css">
+
+    <title>首页</title>
+    <link rel="stylesheet" type="text/css" href="iconfont/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="js/swiper-3.3.1.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/public.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    
+</head>
+<body>
+<header>
+    <div class="headerTop"></div>
+</header>
+<section>
+    <div class="myBanner"></div>
+    <div class="myScroll">
+    </div>
+</section>
+<footer>
+
+</footer>
+<script type="text/javascript" src="js/jquery-1.12.1.js"></script>
+<script type="text/javascript" src="js/swiper-3.3.1.jquery.min.js"></script>
+<script type="text/javascript" src="js/iscroll.js"></script>
+<script type="text/javascript" src="js/iscroll-probe.js"></script>
+<script type="text/javascript" src="tmp/build/template.js"></script>
+<script src="js/app.js" type="text/javascript"></script>
+<script>
+    var headerHtml = template('./tpl/header');
+    var searchHtml = template('./tpl/search');
+    var footerHtml = template('./tpl/footer');
+    $(".headerTop").append(headerHtml);
+    $("section").prepend(searchHtml);
+    $("footer").append(footerHtml);
+    showBanner();
+    function showBanner() {
+        $.ajax({
+            type: "get",
+            url: "http://datainfo.duapp.com/shopdata/getBanner.php",
+            dataType: "JSONP",
+            success: function (data) {
+//                console.log(data);
+                var product = [];
+                for (var i = 0; i < data.length; i++) {
+                    product.push(JSON.parse(data[i].goodsBenUrl)[0]);
+                }
+                var html = template('./tpl/banner',product);
+                $('.myBanner').append(html);
+                var swiper = new Swiper('.swiper-container', {
+                    pagination: '.swiper-pagination',
+                    paginationClickable: true,
+                    autoplay:1500,
+                    centeredSlides: true,
+                    autoplayDisableOnInteraction: false,
+                    loop:true
+                });
+                showScrollGoods();
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                console.log("errorThrown:" + errorThrown);
+            }
+        });
+    }
+    function showScrollGoods(){
+        $.ajax({
+            type:"get",
+            url:"http://datainfo.duapp.com/shopdata/getGoods.php",
+            dataType:"JSONP",
+            success:function(data){
+//              console.log(data);
+                var html = template('./tpl/goodsList',data);
+                $('.myScroll').append(html);
+                var myScroll;
+                loaded();
+                addCart();
+            },
+            error:function(XMLHttpRequest,textStatus,errorThrown){
+                console.log("errorThrown:"+errorThrown);
+            }
+        });
+    }
+    function loaded () {
+        var pullDown = $("#pullDown"),
+            pullUp = $("#pullUp"),
+            pullDownLabel = $(".pullDownLabel"),
+            pullUpLabel = $(".pullUpLabel");
+            loadingStep = 0;//加载状态0默认，1显示加载状态，2执行加载数据，只有当为0时才能再次加载，这是防止过快拉动刷新
+            pullDown.hide();
+            pullUp.hide();
+        myScroll = new IScroll('#wrapper', {
+            scrollbars: true,
+            mouseWheel: true,
+            interactiveScrollbars: true,
+            shrinkScrollbars: 'scale',
+            fadeScrollbars: true,
+            click:true,
+            scrollY:true,
+            probeType: 2,
+            bindToWrapper:true
+        });
+        myScroll.on("scroll",function(){
+            if(loadingStep == 0 && !pullDown.attr("class").match('refresh|loading') && !pullUp.attr("class").match('refresh')){
+                if(this.y > 40){//下拉刷新操作
+                    $(".pulldown-tips").hide();
+                    pullDown.addClass("refresh").show();
+                    pullDownLabel.text("松手刷新数据");
+                    loadingStep = 1;
+                    myScroll.refresh();
+                }else if(this.y < (this.maxScrollY - 14)){//上拉加载更多
+                    pullUp.addClass("refresh").show();
+                    pullUpLabel.text("正在载入");
+                    loadingStep = 1;
+                    // pullUpAction();
+                    myScroll.refresh();
+                }
+            }
+        });
+        myScroll.on("scrollEnd",function(){
+            if(loadingStep == 1){
+                if( pullDown.attr("class").match("refresh") ){//下拉刷新操作
+                    pullDown.removeClass("refresh").addClass("loading");
+                    pullDownLabel.text("正在刷新");
+                    loadingStep = 2;
+                    pullDownAction();
+                }
+            }
+            if(loadingStep==1){
+                if( pullUp.attr("class").match("refresh") ){//上拉加载更多
+                    pullUp.removeClass("refresh").addClass("loading");
+                    pullUp.text("正在刷新");
+                    loadingStep = 2;
+                    pullUpAction();
+                }
+            }
+        });
+        function pullDownAction(){
+            setTimeout(function(){
+                var li, i;
+                for (i = 0,li = ""; i < 3; i++) {
+                    li += "<li>" + "new Add " + new Date().toLocaleString() + " ！" + "</li>";
+                }
+                $("ul").prepend(li);
+                pullDown.attr('class','').hide();
+                myScroll.refresh();
+                loadingStep = 0;
+                $(".pulldown-tips").show();
+            },1000);
+        }
+        function pullUpAction(){
+            setTimeout(function(){
+                var li, i;
+                for (i = 0,li = ""; i < 3; i++) {
+                    li += "<li>" + "new Add " + new Date().toLocaleString() + " ！" + "</li>";
+                }
+                $("ul").append(li);
+                pullUp.attr('class','').hide();
+                myScroll.refresh();
+                loadingStep = 0;
+            },1000);
+        }
+        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    }
+    
+    function addCart(){
+	    $(".cartBtn .iconfont").click(function () {
+	        var url=$(this).parents(".name").find(".getGoodId").prop("href");
+	        //console.log(url);
+	        var addCart = parseUrl(url);
+	        var goodID = addCart["goodsID"];
+	        console.log(addCart["goodsID"]);
+	        var userID = localStorage.getItem("userID");
+	        console.log(userID);
+	        var password = localStorage.getItem("password");
+	        if(userID){
+	            cartUpData(userID,goodID);
+	        }else{
+	            location.href = "login.html";
+	        }
+	    })
+	}
+    function cartUpData(userID,goodID){
+	    $.ajax({
+	        type:"post",
+	        url:"http://datainfo.duapp.com/shopdata/updatecar.php",
+	        data:{
+	            userID:userID,
+	            goodsID:goodID,
+	            number:1
+	        },
+	        success:function(data){
+	            if(data == 1){
+	                alert("添加商品成功");
+	            }
+	            console.log(data);
+	        },
+	        error:function(XMLHttpRequest,textStatus,errorThrown){
+	            console.log("errorThrown:"+errorThrown);
+	        }
+	    });
+	}
+    function parseUrl(url){
+	    var i=url.indexOf('?');
+	    if(i==-1)return;
+	    var querystr=url.substr(i+1);
+	    var arr1=querystr.split('&');
+	    var arr2=new Object();
+	    for  (i in arr1){
+	        var ta=arr1[i].split('=');
+	        arr2[ta[0]]=ta[1];
+	    }
+	    return arr2;
+	}
+</script>
+</body>
+
+</html>

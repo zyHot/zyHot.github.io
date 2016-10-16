@@ -1,0 +1,56 @@
+.register{
+  width: 100%;
+  height: 100%;
+  display: inline-flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  #userName{
+    margin-top: 0.8rem;
+  }
+  #userName,#pw,#pwTwo{
+    width: 80%;
+    height: 0.78rem;
+    border-radius: 0.2rem;
+    outline: none;
+    padding:0 0.2rem;
+    border: 1px solid #a4a4a4;
+  }
+  span{
+    width: 80%;
+    height: 0.6rem;
+    line-height: 0.6rem;
+    padding:0 10px;
+    margin: 0.12rem;
+    color: red;
+  }
+  .color{
+    color: green;
+  }
+  div{
+    width: 80%;
+    margin-top: 0.4rem;
+    display: inline-flex;
+    align-items: center;
+    .forgetPw{
+      margin-left: 0.4rem;
+      color: #9c9c9c;
+      text-decoration: underline;
+    }
+  }
+  .registerBtn,.loginBtn{
+    display: inline-block;
+    width: 5.56rem;
+    height: 0.78rem;
+    color: white;
+    text-align: center;
+    line-height: 0.78rem;
+    font-weight: bold;
+    font-size: 0.36rem;
+    background-color: #e02760;
+    border-radius: 0.2rem;
+    margin-top: 0.2rem;
+  }
+  .loginBtn{
+    margin-top: 0.6rem;
+  }
+}

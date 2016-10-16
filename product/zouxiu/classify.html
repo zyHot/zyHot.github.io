@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!-- SEO  -->
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <!-- 苹果专用 -->
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="blank"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <!-- 简单移动端适配 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <!-- 图标 -->
+    <link rel="shortcut icon" href="iconfont/iconfont.css">
+    <title>首页</title>
+    <link rel="stylesheet" type="text/css" href="iconfont/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="js/swiper-3.3.1.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/public.css">
+    <link rel="stylesheet" type="text/css" href="css/classify.css">
+</head>
+<body>
+<header>
+    <div class="headerTop"></div>
+</header>
+<section>
+    <div class="all">
+        <div class="row">
+            <p>全部 <span class="iconfont">&#xe619;</span></p>
+            <ul>
+            </ul>
+        </div>
+    </div>
+</section>
+<footer>
+</footer>
+<script type="text/javascript" src="js/jquery-1.12.1.js"></script>
+<script type="text/javascript" src="js/swiper-3.3.1.jquery.min.js"></script>
+<script type="text/javascript" src="js/iscroll.js"></script>
+<script type="text/javascript" src="tmp/build/template.js"></script>
+<script src="js/app.js" type="text/javascript"></script>
+<script src="js/classify.js" type="text/javascript"></script>
+<script>
+    var headerHtml = template('./tpl/header');
+    var searchHtml = template('./tpl/search');
+    var footerHtml = template('./tpl/footer');
+    $(".headerTop").append(headerHtml);
+    $("section").prepend(searchHtml);
+    $("footer").append(footerHtml);
+    $("span").removeClass("border").eq(2).addClass("border");
+</script>
+</body>
+</html>

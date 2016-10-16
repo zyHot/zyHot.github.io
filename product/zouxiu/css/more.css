@@ -1,0 +1,38 @@
+.more {
+  width: 100%;
+  height: 100%;
+  display: inline-flex;
+  flex-flow: column nowrap;
+  justify-content: space-around; }
+  .more div {
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 0.4rem;
+    border: 1px solid #dedede; }
+    .more div p {
+      width: 100%;
+      height: 0.88rem;
+      line-height: 0.88rem;
+      border-bottom: 1px solid #dedede;
+      font-weight: 400;
+      display: inline-flex;
+      justify-content: center; }
+      .more div p a {
+        width: 90%;
+        color: black; }
+        .more div p a span {
+          float: right; }
+    .more div p:last-child {
+      border-bottom: none; }
+  .more button {
+    width: 90%;
+    margin: 0 auto;
+    height: 0.9rem;
+    border: none;
+    border-radius: 10px;
+    background-color: #e02760;
+    color: white;
+    font-size: 0.32rem;
+    font-weight: bold; }
+
+/*# sourceMappingURL=more.css.map */

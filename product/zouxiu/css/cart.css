@@ -1,0 +1,127 @@
+.cartTop {
+  width: 100%;
+  height: 0.86rem;
+  background-color: #333333;
+  color: #f9f9f9;
+  font-size: 0.24rem;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .cartTop .num {
+    font-weight: bold; }
+  .cartTop b {
+    color: #e3366b; }
+    .cartTop b .total {
+      font-size: 0.32rem; }
+
+.cartList {
+  position: relative;
+  width: 100%;
+  height: 2.32rem;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center; }
+  .cartList .cartLeft {
+    width: 2.3rem;
+    height: 2.32rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center; }
+    .cartList .cartLeft img {
+      width: 1.72rem;
+      height: 1.72rem; }
+  .cartList .cartRight {
+    flex: 1; }
+    .cartList .cartRight .shopName {
+      font-size: 0.28rem; }
+      .cartList .cartRight .shopName .span {
+        width: 100%;
+        font-size: 0.28rem;
+        display: inline-flex; }
+        .cartList .cartRight .shopName .span > p {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          width: 70%; }
+          .cartList .cartRight .shopName .span > p a {
+            color: black;
+            line-height: 0.4rem; }
+          .cartList .cartRight .shopName .span > p > b {
+            color: #e4386a; }
+            .cartList .cartRight .shopName .span > p > b span {
+              font-size: 0.32rem; }
+        .cartList .cartRight .shopName .span > span {
+          width: 30%;
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 0.48rem;
+          color: #e02760; }
+    .cartList .cartRight .upNum {
+      display: inline-flex; }
+      .cartList .cartRight .upNum p {
+        line-height: 0.44rem; }
+      .cartList .cartRight .upNum a {
+        display: inline-block;
+        width: 0.58rem;
+        height: 0.4rem;
+        text-align: center;
+        line-height: 0.4rem;
+        border-radius: 0.1rem;
+        background-color: #9e9e9e;
+        color: white; }
+      .cartList .cartRight .upNum input {
+        width: 0.76rem;
+        height: 0.4rem;
+        text-align: center;
+        line-height: 0.4rem;
+        border-radius: 0.1rem;
+        margin: 0 0.08rem;
+        outline: none; }
+
+.cartList:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #aaaaaa;
+  -webkit-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scaleY(0.5);
+  -ms-transform: scaleY(0.5);
+  transform: scaleY(0.5); }
+
+.empty {
+  width: 80%;
+  height: 80%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-flow: column nowrap; }
+  .empty img {
+    width: 2.6rem;
+    height: 2.6rem;
+    margin-top: 0.4rem; }
+  .empty h3 {
+    font-size: 0.36rem;
+    margin-top: 0.6rem; }
+  .empty a {
+    display: inline-block;
+    width: 4.22rem;
+    height: 0.92rem;
+    color: #ffffff;
+    background-color: #e02760;
+    margin-top: 0.68rem;
+    border-radius: 0.1rem;
+    text-align: center;
+    line-height: 0.92rem;
+    font-size: 0.48rem;
+    font-weight: bold; }
+
+/*# sourceMappingURL=cart.css.map */
