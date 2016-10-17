@@ -1,9 +1,7 @@
 /**
  * Created by my on 2016/10/9.
  */
-var headerHtml = template('./tpl/header');
 var footerHtml = template('./tpl/footer');
-$(".headerTop").append(headerHtml);
 $("footer").append(footerHtml);
 $("span").removeClass("border").eq(1).addClass("border");
 var classID;
