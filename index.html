@@ -251,11 +251,9 @@
 
 
 <div id="loader-wrapper">
-	
 	<div id="loader"></div>
 	<div class="loader-section section-left"></div>
 	<div class="loader-section section-right"></div>
-
 </div>
 
 <!-- load JS files -->
@@ -269,7 +267,7 @@
 	/*
 		Everything is loaded including images.
 	*/
-	
+	$(window).load(function(){
 
 		adjustHeightOfPage(1); // Adjust page height
 
@@ -300,7 +298,7 @@
 		// https://ihatetomatoes.net/create-custom-preloading-screen/
 		$('body').addClass('loaded');
 				   
-
+	});
 	function adjustHeightOfPage(pageNo) {
 	   
 		// Get the page height
