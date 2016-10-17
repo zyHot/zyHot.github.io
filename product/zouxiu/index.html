@@ -52,7 +52,7 @@
     function showBanner() {
         $.ajax({
             type: "get",
-            url: "http://datainfo.duapp.com/shopdata/getBanner.php",
+            url: "https://datainfo.duapp.com/shopdata/getBanner.php",
             dataType: "JSONP",
             success: function (data) {
 //                console.log(data);
@@ -80,7 +80,7 @@
     function showScrollGoods(){
         $.ajax({
             type:"get",
-            url:"http://datainfo.duapp.com/shopdata/getGoods.php",
+            url:"https://datainfo.duapp.com/shopdata/getGoods.php",
             dataType:"JSONP",
             success:function(data){
 //              console.log(data);
@@ -197,7 +197,7 @@
     function cartUpData(userID,goodID){
 	    $.ajax({
 	        type:"post",
-	        url:"http://datainfo.duapp.com/shopdata/updatecar.php",
+	        url:"https://datainfo.duapp.com/shopdata/updatecar.php",
 	        data:{
 	            userID:userID,
 	            goodsID:goodID,
