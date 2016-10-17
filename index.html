@@ -267,8 +267,7 @@
 	/*
 		Everything is loaded including images.
 	*/
-	$(window).load(function(){
-
+	$(document).ready(function(){
 		adjustHeightOfPage(1); // Adjust page height
 
 		/* Gallery pop up
@@ -297,7 +296,6 @@
 		// Remove preloader
 		// https://ihatetomatoes.net/create-custom-preloading-screen/
 		$('body').addClass('loaded');
-				   
 	});
 	function adjustHeightOfPage(pageNo) {
 	   
