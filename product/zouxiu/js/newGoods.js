@@ -18,7 +18,7 @@ function showAllClass(classID){
     var arr = [];
     $.ajax({
         type: "get",
-        url: "http://datainfo.duapp.com/shopdata/getclass.php",
+        url: "https://datainfo.duapp.com/shopdata/getclass.php",
         dataType: "JSON",
         success: function (data) {
             console.log(data);
@@ -83,7 +83,7 @@ function loadOneClassGood(nowActive,classID,pageCode,linenumber){
 	var linenumber = linenumber ? linenumber :10;	
     $.ajax({
         type:"get",
-        url:"http://datainfo.duapp.com/shopdata/getGoods.php",
+        url:"https://datainfo.duapp.com/shopdata/getGoods.php",
         data:{
         	classID:tmpClassID,
         	pageCode:pageCode,

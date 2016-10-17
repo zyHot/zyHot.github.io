@@ -14,7 +14,7 @@ showAllClass();
 function showAllClass(){
     $.ajax({
         type:"get",
-        url:"http://datainfo.duapp.com/shopdata/getclass.php",
+        url:"https://datainfo.duapp.com/shopdata/getclass.php",
         dataType:"JSON",
         success: function (data) {
             //console.log(data);

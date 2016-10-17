@@ -8,7 +8,7 @@ if(userID){
 function loadGood(userID){
     $.ajax({
         type:"get",
-        url:"http://datainfo.duapp.com/shopdata/getCar.php",
+        url:"https://datainfo.duapp.com/shopdata/getCar.php",
         data:{
             userID:userID
         },
@@ -81,7 +81,7 @@ function upNum(userID,goodsID,number){
     //console.log(goodsID);
     $.ajax({
         type:"get",
-        url:"http://datainfo.duapp.com/shopdata/updatecar.php",
+        url:"https://datainfo.duapp.com/shopdata/updatecar.php",
         data:{
             userID:userID,
             goodsID:goodsID.goodsID,

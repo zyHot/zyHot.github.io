@@ -7,7 +7,7 @@ $(".loginBtn").click(function () {
 function login(){
     $.ajax({
        type:"post",
-        url:"http://datainfo.duapp.com/shopdata/userinfo.php",
+        url:"https://datainfo.duapp.com/shopdata/userinfo.php",
         data:{
             status:"login",
             userID:$("#userName").val(),

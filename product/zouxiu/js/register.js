@@ -20,7 +20,7 @@ $("#pwTwo").blur(function () {
 function checkUserNameeXist(){
     $.ajax({
         type:"POST",
-        url:"http://datainfo.duapp.com/shopdata/userinfo.php",
+        url:"https://datainfo.duapp.com/shopdata/userinfo.php",
         data:{
             status:"register",
             userID:$("#userName").val(),
