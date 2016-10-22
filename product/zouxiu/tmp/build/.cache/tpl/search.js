@@ -1,2 +1,0 @@
-/*TMODJS:{"version":3,"md5":"62901c06dc9e42ce320cd3924d0de956"}*/
-template('tpl/search','<div class="search"> <div class="span"> <i class="iconfont">&#xe615;</i> <input type="text" placeholder="请输入搜索内容"> </div> </div>');

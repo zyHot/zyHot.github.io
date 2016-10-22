@@ -1,2 +1,0 @@
-/*TMODJS:{"version":24,"md5":"825d184563bd3404eda77144876fc325"}*/
-template('tpl/header','<div class="left"> <a href="javascript:history.go(-1)"> </a> </div> <div class="center"> <img src="img/logo1.jpg" alt=""> <b>走秀网</b> </div> <div class="right"> </div> ');
