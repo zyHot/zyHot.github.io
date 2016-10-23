@@ -28,6 +28,16 @@ jQuery(document).ready(function($){
 			var selectedItem = $(this);
 			if(!selectedItem.hasClass('selected')) {
 				// if it's not already selected
+				
+				if($(this).index() == 1){
+					var myCanvasRotate = new MyCanvasRotate("html",1.9);
+					var myCanvasRotate1 = new MyCanvasRotate("css",1.8);
+					var myCanvasRotate2 = new MyCanvasRotate("jquery",1.8);
+					var myCanvasRotate3 = new MyCanvasRotate("swiper",1.8);
+					var myCanvasRotate4 = new MyCanvasRotate("angularjs",1.6);
+					var myCanvasRotate5 = new MyCanvasRotate("bootstrap",1.7);
+					
+				}
 				var selectedPosition = selectedItem.index(),
 					activePosition = slidesWrapper.find('li.selected').index();
 				
@@ -130,3 +140,44 @@ jQuery(document).ready(function($){
 	    return this;
 	};
 });
+
+function MyCanvasRotate(obj,num){
+	this.obj = obj;
+	this.num = num;
+	this.j = 0;
+	this.rotate();
+	this.setInterval();
+	var timer;
+}
+MyCanvasRotate.prototype.rotate = function(){
+	var cxt = document.getElementById(this.obj).getContext('2d');
+	this.j++;
+	if(this.j>200){
+		clearInterval(this.timer);
+	}else{
+		cxt.save();
+		cxt.translate(60, 60)
+		cxt.clearRect(0, 0, 550, 550);
+		cxt.beginPath();
+		cxt.save();
+	    cxt.restore();
+	    cxt.lineWidth = 10;
+	    cxt.strokeStyle = 'gray';
+	    cxt.arc(0, 0, 50, 0, this.j*Math.PI * this.num/200, false);
+	    cxt.stroke();
+	    
+	    cxt.beginPath();
+	    cxt.strokeStyle = 'white';
+	    cxt.arc(0, 0, 50, this.j*Math.PI * this.num/200, Math.PI * 2, false);
+	    cxt.stroke();
+	    cxt.restore();
+	    $("canvas").css("transform","rotate(-90deg)");
+	}
+}
+MyCanvasRotate.prototype.setInterval = function(){
+	var that = this;
+	clearInterval(this.timer);
+	this.timer = setInterval(function(){
+		that.rotate();
+	},10)
+}
