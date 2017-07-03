@@ -33,10 +33,11 @@ jQuery(document).ready(function($){
 					var myCanvasRotate = new MyCanvasRotate("html",1.9);
 					var myCanvasRotate1 = new MyCanvasRotate("css",1.8);
 					var myCanvasRotate2 = new MyCanvasRotate("jquery",1.8);
-					var myCanvasRotate3 = new MyCanvasRotate("swiper",1.8);
-					var myCanvasRotate4 = new MyCanvasRotate("angularjs",1.6);
-					var myCanvasRotate5 = new MyCanvasRotate("bootstrap",1.7);
-					
+					var myCanvasRotate3 = new MyCanvasRotate("swiper",1.7);
+					var myCanvasRotate4 = new MyCanvasRotate("vue",1.8);
+					var myCanvasRotate5 = new MyCanvasRotate("bootstrap",1.6);
+					var myCanvasRotate6 = new MyCanvasRotate("element",1.5);
+					var myCanvasRotate7 = new MyCanvasRotate("svn",1.8);
 				}
 				var selectedPosition = selectedItem.index(),
 					activePosition = slidesWrapper.find('li.selected').index();
